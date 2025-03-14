@@ -47,8 +47,7 @@ let rec addroot tree x =
 let rec addfew tree n =
     if n > 0 then
         printf"Введите следующую строку для добавления в дерево: "
-        let a = addroot tree (Console.ReadLine())
-        addfew a (n-1)
+        addfew (addroot tree (Console.ReadLine())) (n-1)
     else tree
 
 let rec InInt () =
@@ -74,10 +73,15 @@ let rec addChar tree x =
 
 printf"Введите количество корней в дереве: "
 let tree1 = addfew Empty (InInt())
-let x = Console.GetCursorPosition().ToTuple()
-printfn"Ваше дерево"
-vyv tree1 (10*depth tree1 0) (snd x) 1
-Console.SetCursorPosition (0, (snd x) + 2 * depth tree1 0)
-let y = Console.GetCursorPosition().ToTuple()
-vyv (addChar tree1 (InChar())) (10*depth tree1 0) (snd y) 1
-Console.SetCursorPosition (0, (snd y) + 2 * depth tree1 0)
+if tree1 = Empty then
+    printf"Ваше дерево пусто, так как вы ввели не натуральное число"
+else
+    printfn"Ваше дерево"
+    let x = Console.GetCursorPosition().ToTuple()
+    vyv tree1 (10*depth tree1 0) (snd x) 1
+    Console.SetCursorPosition (0, (snd x) + 2 * depth tree1 0)
+    printfn"Ваше изменённое дерево"
+    let z = InChar()
+    let y = Console.GetCursorPosition().ToTuple()
+    vyv (addChar tree1 (z)) (10*depth tree1 0) (snd y) 1
+    Console.SetCursorPosition (0, (snd y) + 2 * depth tree1 0)

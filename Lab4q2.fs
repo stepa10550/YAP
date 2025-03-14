@@ -47,8 +47,7 @@ let rec InInt () =
 let rec addfew tree n =
     if n > 0 then
         printf"Введите следующее число для добавления в дерево: "
-        let a = addroot tree (InInt())
-        addfew a (n-1)
+        addfew (addroot tree (InInt())) (n-1)
     else tree
 
 let rec sumEven tree r = 
@@ -71,8 +70,13 @@ let rec sumNotEven tree r =
 
 printf"Введите количество корней в дереве: "
 let tree1 = addfew Empty (InInt())
-printfn"Ваше дерево"
-let x = Console.GetCursorPosition().ToTuple()
-vyv tree1 (10*depth tree1 0) (snd x) 1
-Console.SetCursorPosition (0, (snd x) + 2 * depth tree1 0)
-printf "Сумма чётных чисел дерева: %d\nСумма нечётных чисел дерева: %d" (sumEven tree1 0) (sumNotEven tree1 0)
+if tree1 <> Empty then
+    printfn"Ваше дерево"
+    let x = Console.GetCursorPosition().ToTuple()
+    vyv tree1 (10*depth tree1 0) (snd x) 1
+    Console.SetCursorPosition (0, (snd x) + 2 * depth tree1 0)
+    printfn "Сумма чётных чисел дерева: %d\nСумма нечётных чисел дерева: %d" (sumEven tree1 0) (sumNotEven tree1 0)
+    if sumEven tree1 0 > sumNotEven tree1 0 then printf "Сумма чётных чисел больше"
+    else printf "Сумма нечётных чисел больше"
+else
+    printf"Ваше дерево пусто, так как вы ввели не натуральное число"
