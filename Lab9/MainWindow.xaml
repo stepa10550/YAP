@@ -1,0 +1,39 @@
+﻿<Window x:Class="Lab9.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Money App" Height="400" Width="400">
+    <StackPanel Margin="20">
+        <TextBlock Text="Создание кучи денег" FontWeight="Bold"/>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Рубли: " VerticalAlignment="Center"/>
+            <TextBox x:Name="RublesInput" Width="50" Margin="5"/>
+            <TextBlock Text="Копейки: " VerticalAlignment="Center"/>
+            <TextBox x:Name="KopeksInput" Width="50" Margin="5"/>
+        </StackPanel>
+
+        <Button Content="Создать кучу" Click="CreateMoney_Click" Margin="0 5"/>
+        <StackPanel Orientation="Horizontal" Margin="0 10">
+            <Button Content="Прибавить копейку" Width="180"  Click="Increment_Click"/>
+            <Button Content="Вычесть копейку" Width ="180" Click="Decrement_Click"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text=" Подкинуть копеек: " FontWeight="Bold"/>
+            <TextBox x:Name="AddKopeksInput" Width="50" Margin="5"/>
+            <Button Content="Добавить копейки" Click="AddKopeks_Click"/>
+        </StackPanel>
+        <TextBlock Text="Вспомогательная куча" FontWeight="Bold"/>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Рубли: " VerticalAlignment="Center"/>
+            <TextBox x:Name="RublesInput2" Width="50" Margin="5"/>
+            <TextBlock Text="Копейки: " VerticalAlignment="Center"/>
+            <TextBox x:Name="KopeksInput2" Width="50" Margin="5"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Сложить кучи" Width ="180" Click="AddItself_Click"/>
+            <Button Content="Вычесть кучи" Width ="180" Click="SubtractSelf_Click"/>
+        </StackPanel>
+
+        <TextBlock Text="Вывод:" FontWeight="Bold" Margin="10 5 0 0"/>
+        <TextBlock x:Name="OutputText" FontSize="16" TextWrapping="Wrap"/>
+    </StackPanel>
+</Window>
